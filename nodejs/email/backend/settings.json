@@ -1,0 +1,14 @@
+{
+    "development": {
+        "mongoURL": "mongodb://127.0.0.1:27017/lightmail",
+        "accessTokenSecret": "lightmail_access_token",
+        "refreshTokenSecret": "lightmail_refresh_token",
+        "tokenLife": "10m"
+    },
+    "test": {
+        "mongoURL": "mongodb://127.0.0.1:27017/lightmail",
+        "accessTokenSecret": "lightmail_access_test_token",
+        "refreshTokenSecret": "lightmail_refresh_test_token",
+        "tokenLife": "10m"
+    }
+}
