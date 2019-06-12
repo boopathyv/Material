@@ -1,0 +1,27 @@
+.row_margin{
+	margin:16px 0 !important;
+}
+
+.main_header{
+	background: -webkit-linear-gradient(0deg, #1809ff,#ff0909,#ffec09,#0949ff,#2fff09, #ff0c00 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: white;
+}
+
+.sign_in_instead{
+	color: blueviolet;
+	cursor: pointer;
+}
+
+.sign_up_group{
+	background-color: aliceblue;
+}
+
+.sign_up_mail_name{
+	background-color: white !important;
+}
+
+.sign_up_mail_name_input{
+	border-right:1px !important;
+}
