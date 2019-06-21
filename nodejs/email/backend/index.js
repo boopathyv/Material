@@ -1,6 +1,6 @@
 'use strict';
 
-require('./settings');
+require('./setting');
 const db = require('./database/connection');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,6 +9,7 @@ const app = express();
 const userController = require('./controllers/user');
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
@@ -32,4 +33,4 @@ app.use(function(req, res, next) {
 
 app.use('/user/', userController);
 
-app.listen(3000, () => console.log('server is running'));
+app.listen(3008, () => console.log('server is running on 3008'));

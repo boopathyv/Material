@@ -6,18 +6,25 @@ const { verifyAccessToken } = require('../middleware/verifyAccessToken');
 const { verifyRefreshToken } = require('../middleware/verifyRefreshToken');
 const { getAccessToken } = require('../utils/getToken');
 const { isUserVerified } = require('../middleware/isUserVerified');
+const {mailAuthentication,getAuthenticationId} = require('../utils/mailer');
 
-router.post('/signup', (req, res) => {
-	const name = req.body.name;
+router.post('/signup', async (req, res) => {
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
 	const email = req.body.email;
 	const password = req.body.password;
+	const gmailId = req.body.gmailId;
 
-	if (!name || !email || !password) {
+	if (!firstname || !lastname || !email || !password || !gmailId) {
 		return res.json({ error: 'insufficient data' });
 	}
 
 	let userRefreshToken;
-	let newUser = new User({ name, email, password });
+	let authenticationId = getAuthenticationId();
+	let newUser = new User({firstname:firstname,
+		lastname:lastname,email:email,
+		password:password,gmailId:gmailId,
+		authenticationId:authenticationId});
 	newUser
 		.createSession(req)
 		.then(refreshToken => {
@@ -25,12 +32,17 @@ router.post('/signup', (req, res) => {
 			return newUser.generateAccessToken();
 		})
 		.then(userAccessToken => {
-			res
-				.header('x-refresh-token', userRefreshToken)
-				.header('x-access-token', userAccessToken)
-				.send(newUser);
-		})
-		.catch(error => {
+			mailAuthentication(authenticationId,gmailId,
+				function (error, info) {
+					if(error){
+						res.json({ error: error.message });
+					}else{
+						res.header('x-refresh-token', userRefreshToken)
+							.header('x-access-token', userAccessToken)
+							.send(newUser);
+					}
+			});		
+		}).catch(error => {
 			res.json({ error: error.message });
 		});
 });

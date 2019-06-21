@@ -3,10 +3,10 @@
 }
 
 .main_header{
+	width: 150px;
 	background: -webkit-linear-gradient(0deg, #1809ff,#ff0909,#ffec09,#0949ff,#2fff09, #ff0c00 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-color: white;
 }
 
 .sign_in_instead{
@@ -15,6 +15,8 @@
 }
 
 .sign_up_group{
+	height: 100%;
+	width: 100%;
 	background-color: aliceblue;
 }
 
@@ -24,4 +26,14 @@
 
 .sign_up_mail_name_input{
 	border-right:1px !important;
+}
+
+.password-confirmation-correct {
+    padding-top: 10px;
+    color: green;
+}
+
+.password-confirmation-ban {
+    padding-top: 10px;
+    color: red;
 }

@@ -6,7 +6,11 @@ const { getAccessToken, getRefreshToken } = require('../utils/getToken');
 const sessionSchema = require('./sessionModel');
 
 const userSchema = mongoose.Schema({
-	name: {
+	firstname: {
+		type: String,
+		required: true
+	},
+	lastname: {
 		type: String,
 		required: true
 	},
@@ -21,9 +25,16 @@ const userSchema = mongoose.Schema({
 		minlength: 8,
 		required: true
 	},
+	gmailId: {
+		type: String,
+		required: true
+	},
+	authenticationId:{
+		type: Number
+	},
 	isVerified: {
 		type: Boolean,
-		default: true
+		default: false
 		//change default to false, once mail functionality is included
 	},
 	sessions: [sessionSchema]
@@ -149,3 +160,5 @@ const saveSession = (user, session) => {
 };
 
 const User = mongoose.model('users', userSchema);
+
+module.exports = User;
