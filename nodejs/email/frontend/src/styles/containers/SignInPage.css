@@ -1,0 +1,6 @@
+.signin_page_image{
+	background-image: url("../images/sign_up_logo.svg");
+	background-size: cover;
+	height: 200px;
+	width: 200px;
+}

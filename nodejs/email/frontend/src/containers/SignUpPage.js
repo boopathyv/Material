@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import '../styles/containers/LoginPage.css';
+import '../styles/containers/SignUpPage.css';
 import ScreenBackGround from '../components/ScreenBackGround';
 import postman from '../mediator/postman';
 
-class LoginPage extends Component {
+class SignUpPage extends Component {
 	state = {
 		firstname : '',
 		lastname : '',
@@ -19,8 +19,8 @@ class LoginPage extends Component {
 		var data = this.state;
 		data['gmailId'] = data['gmailId']+'@gmail.com';
 		postman.post('/user/signup',this.state,function(error,response){
-			this.props.history.push('/mails');
-		})
+			this.props.history.push('/verificationLink');
+		}.bind(this));
 	}
 
 	onChangeHandle(e){
@@ -120,7 +120,7 @@ class LoginPage extends Component {
 						<div class="row row_margin">
 							<div class="col-md-12">
 								<div class="row row_margin" style={{justifyContent: 'space-between'}}>
-									<div onClick={()=>this.props.history.push("/mails")} className="sign_in_instead">
+									<div onClick={()=>this.props.history.push("/signin")} className="sign_in_instead">
 										Sign in instead</div>
 									<button type="button" class="btn btn-primary" onClick={this.onNextClick.bind(this)}>
 										Next
@@ -130,7 +130,7 @@ class LoginPage extends Component {
 						</div>
 						</div>
 						<div class="col-md-4">
-							<div className="login_page_image"></div>
+							<div className="signup_page_image"></div>
 						</div>
 						</div>
 					</div>
@@ -139,4 +139,4 @@ class LoginPage extends Component {
 	}
 }
 
-export default LoginPage
+export default SignUpPage

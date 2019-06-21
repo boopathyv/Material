@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
 			return newUser.generateAccessToken();
 		})
 		.then(userAccessToken => {
-			mailAuthentication(authenticationId,gmailId,
+			mailAuthentication(userAccessToken,gmailId,
 				function (error, info) {
 					if(error){
 						res.json({ error: error.message });
@@ -103,6 +103,17 @@ router.post('/deletetoken', verifyAccessToken, isUserVerified, (req, res) => {
 	} catch (e) {
 		res.json({ error: e.message });
 	}
+});
+
+router.get('/verifyAccount',verifyAccessToken, (req, res) => {
+	const id = req.user_id;
+	User.findOneAndUpdate({ _id: id },{isVerified:true})
+		.then(user => {
+			res.json({ verified : true });
+		})
+		.catch(error => {
+			res.json({ verified : false });
+		});
 });
 
 router.get('/gettokens', verifyAccessToken, isUserVerified, (req, res) => {

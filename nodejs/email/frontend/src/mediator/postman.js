@@ -2,21 +2,27 @@ const axios = require('axios');
 const mainUrl = 'http://localhost:3008';
 
 
-const config = {
-	headers: {
-		'Content-Type':'application/json;charset=UTF-8'
-	}
+function getConfig(){
+	return {
+		headers: {
+			'Content-Type':'application/json;charset=UTF-8',
+			'x-access-token':localStorage.getItem('x-access-token'),
+			'x-refresh-token':localStorage.getItem('x-refresh-token')
+		}
+	};
 }
 
 async function get(url,queryData,cb){
 	let getUrl = mainUrl+url;
-	axios.get(getUrl,{data :queryData})
+	let params = getConfig();
+	params['params'] = queryData;
+	axios.get(getUrl,params)
 		.then(response => {
 		if (response) {
-		  console.log(response);
+		  cb(null,response);
 		}
 	}).catch(error => {
-		console.log(error)
+		cb(error,null);
 	})
 }
 
@@ -25,13 +31,13 @@ async function post(url,data,cb){
 	axios.post(
 		postUrl,
 		JSON.stringify(data),
-		config)
+		getConfig())
 		.then(response => {
 		if (response) {
-		  console.log(response);
+			cb(null,response);
 		}
 	}).catch(error => {
-		console.log(error)
+		cb(error,null);
 	})
 }
 
