@@ -10,7 +10,7 @@ import AccountVerification from './containers/AccountVerification';
 class App extends Component {
 
 	state = {
-		login : false
+		login : true
 	}
 
 	onClickHandle(params) {
@@ -19,9 +19,10 @@ class App extends Component {
   
     render(){
 		return (
+			<div className="light_mail">
 			<Router>
 				<Switch>
-					<Redirect exact from="/" to="/signup" component={SignUpPage}></Redirect>
+					<Redirect exact from="/" to="/signin"></Redirect>
 					<Route path="/verificationLink" exact render={()=>{
 						return <div>
 							<h1>Account Verification</h1>
@@ -29,22 +30,13 @@ class App extends Component {
 							<a href="https://mail.google.com/">Click Here</a>
 						</div>
 					}}></Route>
-
 					<Route path="/verifyAccount/:id" exact component={AccountVerification}></Route>
-
-					<div className="light_mail">
-					{/* {
-						!this.state.login?
-						<Redirect to="/signup"></Redirect>
-						:	
-						<Redirect to="/mails"></Redirect>
-					} */}
-					<Route path="/signup"  component={SignUpPage}></Route>
-					<Route path="/signin"  component={SignInPage}></Route>
+					<Route path="/signup" exact component={SignUpPage}></Route>
+					<Route path="/signin" component={SignInPage}></Route>
 					<Route path="/mails"  component={Mails}></Route>
-	   				</div>
 				</Switch>
 			</Router>
+	   		</div>
 		);
 	};
 }

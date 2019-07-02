@@ -3,15 +3,23 @@ import '../styles/containers/SignInPage.css';
 import ScreenBackGround from '../components/ScreenBackGround';
 import postman from '../mediator/postman';
 
-class SignUpPage extends Component {
+class SignInPage extends Component {
 	state = {
 		email : '',
 		password : '',
 		regex:/^(?=.*\d).{8,}$/
 	}
 
-	onNextClick(){
-		
+	onSignClick(){
+		postman.post('/user/login',this.state,function(error,response){
+			if(!error && response['data']['login']){
+				var userDetails = response['data']['_doc'];
+				localStorage.setItem("userDetails",JSON.stringify(userDetails));
+				this.props.history.push("/mails");
+			}else{
+				alert(error);
+			}
+		}.bind(this));
 	}
 
 	onChangeHandle(e){
@@ -20,66 +28,47 @@ class SignUpPage extends Component {
 		this.setState({
 			[name]:value
 		})
-
-		if((name === "passwordConfirm")){
-			if(value !== ''){
-				if(this.state.password !== value || !this.state.regex.test(value)){
-					this.setState({
-						showPasswordConfirmation:2
-					})	
-				}else{
-					this.setState({
-						showPasswordConfirmation:1
-					})	
-				}
-			}else{
-				this.setState({
-					showPasswordConfirmation:0
-				})	
-			}
-		}
 	}
 	render() {
 		return (
 				 <ScreenBackGround classes="" position="center">
-						
-					<div class="sign_up_group">
-					<div class="row row_margin">
-					<div class="col-md-12">
-						<div class="row row_margin">
-							<div class="col-md-12">
+					<div className="sign_in_group">
+					<div className="row row_margin">
+					<div className="col-md-12">
+						<div className="row row_margin">
+							<div className="col-md-12">
 								<h3 className="main_header">Light Mail</h3>
 								<h4>SignIn to LightMail Account</h4>
 							</div>
 						</div>
 						
-						<div class="row row_margin">
-						<div class="col-md-12">
-							<div class="input-group mb-3">
-  								<input type="text" class="form-control sign_up_mail_name_input" placeholder="Username" 
+						<div className="row row_margin">
+						<div className="col-md-12">
+							<div className="input-group mb-3">
+  								<input type="text" className="form-control sign_in_mail_name_input" placeholder="Username" 
 								  aria-label="Username" aria-describedby="basic-addon2" 
 								  name="email" value={this.state.email}  onChange={this.onChangeHandle.bind(this)}/>
-  								<div class="input-group-append">
-	    							<span class="input-group-text sign_up_mail_name" id="">@lightmail.com</span>
+  								<div className="input-group-append">
+	    							<span className="input-group-text sign_in_mail_name" id="">@lightmail.com</span>
   								</div>
 							</div>
 						</div>
 						</div>
 						
-						<div class="row row_margin">
-							<div class="col-md-12">
-								<input type="password" class="form-control" id="signup-password" placeholder="Password"
+						<div className="row row_margin">
+							<div className="col-md-12">
+								<input type="password" className="form-control" id="signup-password" placeholder="Password"
 								name="password" value={this.state.password} onChange={this.onChangeHandle.bind(this)}/>
 							</div>
 						</div>
 
-						<div class="row row_margin">
-							<div class="col-md-12">
-								<div class="row row_margin" style={{justifyContent: 'space-between'}}>
+						<div className="row row_margin">
+							<div className="col-md-12">
+								<div className="row row_margin" style={{justifyContent: 'space-between'}}>
 									<div onClick={()=>this.props.history.push("/signup")} className="sign_in_instead">
 										Create Account</div>
-									<button type="button" class="btn btn-primary" onClick={this.onNextClick.bind(this)}>
-										Next
+									<button type="button" className="btn btn-primary" onClick={this.onSignClick.bind(this)}>
+										Sign In
 									</button>
 								</div>
 							</div>
@@ -96,4 +85,4 @@ class SignUpPage extends Component {
 	}
 }
 
-export default SignUpPage
+export default SignInPage

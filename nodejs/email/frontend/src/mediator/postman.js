@@ -18,11 +18,13 @@ async function get(url,queryData,cb){
 	params['params'] = queryData;
 	axios.get(getUrl,params)
 		.then(response => {
-		if (response) {
-		  cb(null,response);
+		if (!response.data.error) {
+			cb(null,response);
+		}else{
+			cb(response['data']['error'],null);
 		}
 	}).catch(error => {
-		cb(error,null);
+			cb(error.message,null);
 	})
 }
 
@@ -33,11 +35,13 @@ async function post(url,data,cb){
 		JSON.stringify(data),
 		getConfig())
 		.then(response => {
-		if (response) {
+		if (!response.data.error) {
 			cb(null,response);
+		}else{
+			cb(response['data']['error'],null);
 		}
 	}).catch(error => {
-		cb(error,null);
+		cb(error.message,null);
 	})
 }
 

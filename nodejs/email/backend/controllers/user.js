@@ -70,7 +70,7 @@ router.post('/login', (req, res) => {
 			res
 				.header('x-refresh-token', userRefreshToken)
 				.header('x-access-token', userAccessToken)
-				.send(currentUser);
+				.send({login:true,...currentUser});
 		})
 		.catch(error => {
 			res.json({ error: error.message });

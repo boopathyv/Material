@@ -4,3 +4,17 @@
 	height: 200px;
 	width: 200px;
 }
+
+.sign_in_group{
+	height: 100%;
+	width: 100%;
+	background-color: aliceblue;
+}
+
+.sign_in_mail_name{
+	background-color: white !important;
+}
+
+.sign_in_mail_name_input{
+	border-right:1px !important;
+}

@@ -1,0 +1,11 @@
+.mail-main-div{
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: #000000;
+}
+
+.mail-content-row{
+	width: 100%;
+	display:flex;
+	flex-direction:row;
+}
