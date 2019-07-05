@@ -13,9 +13,9 @@
 }
 
 .mail_header_logo_image{
-	background-image: url("../images/lightmail_logo.jpg");
+	background-image: url("../images/lightmail_logo.svg");
 	background-size: cover;
-	height: 30px;
+	height: 50px;
 	width: 50px;
 }
 

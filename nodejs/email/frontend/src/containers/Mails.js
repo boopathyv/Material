@@ -22,10 +22,10 @@ class Mails extends Component {
 			<div className="mail-main-div">
 				<MailHeader name={localStorage.getItem("firstname")}></MailHeader>
 				<div className="mail-content-row">
-					<div className="mail-content-sidemenu">					
+					<div className="mail-content-sidemenu">
 						<Sidemenu></Sidemenu>
 					</div>
-					<div className="mail-content-body">
+					<div className="mail-content-body">			
 				    	<Route path="/mails/inbox"  component={InboxList}></Route>
 						<Route path="/mails/starred"  component={()=><div>STARRED</div>}></Route>
 						<Route path="/mails/snoozed"  component={()=><div>SNOOZED</div>}></Route>

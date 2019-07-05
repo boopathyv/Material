@@ -1,0 +1,32 @@
+.splitter-main-div{
+	height: 100%;
+	width: 100%;
+}
+
+.container{
+	flex:auto;
+	flex-basis: 300px;
+}
+
+.split_vertical{
+	display: flex;
+	flex-direction: row;
+}
+
+.vertical_splitter{
+	height: 100%;
+	border-right:2px solid;
+}
+
+.horizontal_splitter{
+	width: 100%;
+	border-bottom:2px solid;
+}
+
+.horizontal_splitter:hover{
+	border-bottom:4px solid blue;
+}
+
+.container_vertical{
+	display: flex;
+}
