@@ -1,6 +1,7 @@
 .sidemenu_bar{
 	min-width: 72px;
 	max-width: 256px;
+	height: 100%;
 }
 
 .sidemenu_open{
