@@ -116,6 +116,10 @@ class Sidemenu extends Component {
 				<div>
 					Section2
 				</div>
+
+				<div>
+					Section3
+				</div>
 			</Splitter>
 			</div>
 	)}

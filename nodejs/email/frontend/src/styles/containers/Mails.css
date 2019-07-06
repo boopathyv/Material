@@ -16,3 +16,7 @@
 .mail-content-body{
 	width: -webkit-fill-available;
 }
+
+.mail-content-sidemenu{
+	max-height: calc(100vh - 60px);
+}
