@@ -18,6 +18,7 @@
     flex-direction: row;
     align-items: center;
 }
+
 .sidemenu_compose_button{
 	background-image:url('https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png');
     background-size: contain;
@@ -37,7 +38,8 @@
 	height: 48px;
     padding: 0 80px 0 16px;
     margin-top: 16px;
-    margin-bottom: 16px;
+	margin-bottom: 16px;
+	cursor: pointer;
 }
 
 .sidemenu_shrink{
@@ -58,6 +60,7 @@
 	background-color: grey;
 	border-top-right-radius: 16px;
 	border-bottom-right-radius: 16px;	
+	cursor: pointer;
 }
 
 .sidemenu_compose_div .sidemenu_shrink{
@@ -65,11 +68,27 @@
 }
 
 .sidemenu_items{
-	height: 195px;
+	flex : 1 1 auto;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 
 .more_item_hide{
 	display: none;
+}
+
+.sidemenu_main_div{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.sidemenu_item_selected{
+	background-color: #8080807a;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.sidemenu_text{
+	cursor: pointer;
 }

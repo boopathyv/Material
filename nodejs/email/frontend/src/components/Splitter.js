@@ -11,9 +11,12 @@ class Splitter extends Component {
 		let isAfterSibling = false;
 		Array(splitContainers).forEach((splitContainer,index)=>{
 			if(e.currentTarget.previousSibling === splitContainer[index] && !isAfterSibling){
-				splitContainer[index].style.setProperty('flex','0');	
+				splitContainer[index].style.setProperty('flex','0 1 auto');	
+				splitContainer[index].style.setProperty('max-height','80%');				
+				isAfterSibling = true;
+			}else if(isAfterSibling){
+				splitContainer[index].style.setProperty('flex','1 1 auto');
 			}
-			splitContainer[index].style.setProperty('flex','1 1 auto');
 		})
 		e.currentTarget.previousSibling.style.setProperty('height',height+'px');
 	}

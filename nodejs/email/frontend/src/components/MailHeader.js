@@ -33,7 +33,7 @@ class MailHeader extends Component {
 				</div>
 
 				<div className="col-md-8">					
-					<SearchBar></SearchBar>
+					<SearchBar placeholder="Search Mail"></SearchBar>
 				</div>
 
 				<div className="col-md-1">	

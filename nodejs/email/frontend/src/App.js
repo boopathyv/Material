@@ -33,7 +33,8 @@ class App extends Component {
 					<Route path="/verifyAccount/:id" exact component={AccountVerification}></Route>
 					<Route path="/signup" exact component={SignUpPage}></Route>
 					<Route path="/signin" component={SignInPage}></Route>
-					<Route path="/mails"  component={Mails}></Route>
+					<Redirect exact from="/mails" to="/mails/inbox"></Redirect>
+					<Route path="/mails" component={Mails}></Route>
 				</Switch>
 			</Router>
 	   		</div>

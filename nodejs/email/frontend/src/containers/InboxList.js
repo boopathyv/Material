@@ -9,31 +9,67 @@ import '../styles/containers/InboxList.css';
 class InboxList extends Component {
 	constructor(props){
 		super(props);
+		let data = [{
+			from:'Boopathy',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Naveen',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Ramesh',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Harish',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Naveen',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Ramesh',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Harish',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Naveen',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Ramesh',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Harish',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		},{
+			from:'Naveen',
+			subject:'Reg:Permission for Leave',
+			body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
+			attachments:'body.mkv'
+		}]
 		this.state = {
 			activeTab : "tab-primary",
-			primaryData:[{
-				from:'Boopathy',
-				subject:'Reg:Permission for Leave',
-				body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
-				attachments:'body.mkv'
-			},{
-				from:'Naveen',
-				subject:'Reg:Permission for Leave',
-				body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
-				attachments:'body.mkv'
-			},{
-				from:'Ramesh',
-				subject:'Reg:Permission for Leave',
-				body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
-				attachments:'body.mkv'
-			},{
-				from:'Harish',
-				subject:'Reg:Permission for Leave',
-				body:'Hi Sir, I kindly request you to grant me leave for 2 days. With Regards, Boopathy.V',
-				attachments:'body.mkv'
-			}],
-			socialData:[],
-			promotionsData:[]
+			primaryData:data,
+			socialData:data,
+			promotionsData:data
 		};
 	}
 
@@ -51,10 +87,10 @@ class InboxList extends Component {
 						<MailList listData={this.state.primaryData}></MailList>
 					</TabItem>
 					<TabItem id="tab-social">
-						Social
+						<MailList listData={this.state.socialData}></MailList>
 					</TabItem>
 					<TabItem id="tab-promotions">
-						Promotions
+						<MailList listData={this.state.promotionsData}></MailList>
 					</TabItem>
 				</Tab>
 			</div>

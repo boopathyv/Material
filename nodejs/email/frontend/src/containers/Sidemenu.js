@@ -22,12 +22,19 @@ class Sidemenu extends Component {
 
 	linkTo(e){
 		let linkTo = e.currentTarget.getAttribute("linkto");
+		let sidemenuItems = document.getElementsByClassName('sidemenu_item');
+		Array.from(sidemenuItems).forEach(element => {
+			if(element === e.currentTarget){
+				element.classList.add('sidemenu_item_selected');
+			}else{
+				element.classList.remove('sidemenu_item_selected');
+			}
+		});
 		this.props.history.push(linkTo);
-		console.log(linkTo);
 	}
 
 	render() {
-		let isOpen = this.state.isOpen ? "":"sidemenu_shrink";
+		let isOpen = this.state.isOpen ? "sidemenu_text":"sidemenu_text sidemenu_shrink";
 		let moreOrLess = this.state.wantMore ? 'fa-chevron-up':'fa-chevron-down';
 		let moreOrLessContent = this.state.wantMore ? 'Less':'More';
 
@@ -35,7 +42,7 @@ class Sidemenu extends Component {
 			<div className={this.state.isOpen ? "sidemenu_bar sidemenu_open":"sidemenu_bar"}>
 			
 			<Splitter splitType={Splitter.splitType.HORIZONTAL}>
-				<div>
+				<div className="sidemenu_main_div">
 					<div className="sidemenu_compose">
 						<div className="sidemenu_compose_div">
 							<div className="sidemenu_compose_button"></div>
@@ -43,7 +50,7 @@ class Sidemenu extends Component {
 						</div>
 					</div>
 					<div className="sidemenu_items">
-						<div className="sidemenu_inbox sidemenu_item" linkto="/mails/inbox" onClick={this.linkTo.bind(this)}>
+						<div className="sidemenu_inbox sidemenu_item sidemenu_item_selected" linkto="/mails/inbox" onClick={this.linkTo.bind(this)}>
 					      	<span className="fas fa-inbox sidemenu_inbox_button"></span>
 				     		<div className={isOpen}>Inbox</div>
 						</div>
@@ -113,13 +120,10 @@ class Sidemenu extends Component {
 					</div>
 				</div>
 
-				<div>
+				<div className="sidemenu_main_div">
 					Section2
 				</div>
 
-				<div>
-					Section3
-				</div>
 			</Splitter>
 			</div>
 	)}

@@ -20,7 +20,7 @@ class Mails extends Component {
 		return (
 			<>
 			<div className="mail-main-div">
-				<MailHeader name={localStorage.getItem("firstname")}></MailHeader>
+				<MailHeader></MailHeader>
 				<div className="mail-content-row">
 					<div className="mail-content-sidemenu">
 						<Sidemenu></Sidemenu>
