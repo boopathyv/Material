@@ -116,6 +116,20 @@ router.get('/verifyAccount',verifyAccessToken, (req, res) => {
 		});
 });
 
+router.get('/getMailIds', verifyAccessToken, isUserVerified, (req, res) => {
+	let searchObject = req.query.search;
+	User.find().then(user => {
+		console.log('user...',user);
+		let mailIds = user.map(data => data['_doc']).filter(doc => doc['email'].startsWith(searchObject)).map((data,key)=>{
+			return data['email']+'@lightmail.com';
+		})
+		res.json({ mailIds : mailIds });
+	}).catch(error => {
+		res.json({ error : error.message });
+	});
+});
+
+
 router.get('/gettokens', verifyAccessToken, isUserVerified, (req, res) => {
 	const id = req.user_id;
 	User.findOne({ _id: id })

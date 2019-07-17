@@ -20,6 +20,10 @@ class Sidemenu extends Component {
 		this.setState({wantMore:wantMore});
 	}
 
+	onCompose(e){
+
+	}
+
 	linkTo(e){
 		let linkTo = e.currentTarget.getAttribute("linkto");
 		let sidemenuItems = document.getElementsByClassName('sidemenu_item');
@@ -43,7 +47,7 @@ class Sidemenu extends Component {
 			
 			<Splitter splitType={Splitter.splitType.HORIZONTAL}>
 				<div className="sidemenu_main_div">
-					<div className="sidemenu_compose">
+					<div className="sidemenu_compose" onClick={this.props.openCompose.bind(this)}>
 						<div className="sidemenu_compose_div">
 							<div className="sidemenu_compose_button"></div>
 							<div className={isOpen}>Compose</div>

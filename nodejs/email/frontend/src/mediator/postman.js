@@ -19,6 +19,7 @@ async function get(url,queryData,cb){
 	axios.get(getUrl,params)
 		.then(response => {
 		if (!response.data.error) {
+			setHeaders(response);
 			cb(null,response);
 		}else{
 			cb(response['data']['error'],null);
@@ -36,6 +37,7 @@ async function post(url,data,cb){
 		getConfig())
 		.then(response => {
 		if (!response.data.error) {
+			setHeaders(response);
 			cb(null,response);
 		}else{
 			cb(response['data']['error'],null);
@@ -43,6 +45,15 @@ async function post(url,data,cb){
 	}).catch(error => {
 		cb(error.message,null);
 	})
+}
+
+function setHeaders(response){
+	if(response['headers']['x-access-token']){
+		localStorage.setItem('x-access-token',response['headers']['x-access-token']);
+	}
+	if(response['headers']['x-refresh-token']){
+		localStorage.setItem('x-refresh-token',response['headers']['x-refresh-token']);
+	}
 }
 
 export default {get,post};

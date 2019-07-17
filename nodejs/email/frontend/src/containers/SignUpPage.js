@@ -18,6 +18,7 @@ class SignUpPage extends Component {
 	onNextClick(){
 		var data = this.state;
 		data['gmailId'] = data['gmailId']+'@gmail.com';
+		data['email'] = data['email']+'@lightmail.com';
 		postman.post('/user/signup',this.state,function(error,response){
 			this.props.history.push('/verificationLink');
 		}.bind(this));

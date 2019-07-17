@@ -67,9 +67,9 @@ class InboxList extends Component {
 		}]
 		this.state = {
 			activeTab : "tab-primary",
-			primaryData:data,
-			socialData:data,
-			promotionsData:data
+			primaryData : data,
+			socialData : data,
+			promotionsData : data
 		};
 	}
 

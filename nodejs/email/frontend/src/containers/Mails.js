@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import MailHeader from '../components/MailHeader';
+import MailComposer from '../components/MailComposer';
 import Sidemenu from './Sidemenu';
 import {Route} from 'react-router-dom';
 import InboxList from './InboxList';
@@ -12,8 +13,20 @@ class Mails extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-	
+			openCompose :false
 		}
+	}
+
+	openCompose(){
+		this.setState({
+			openCompose : true
+		})
+	}
+
+	closeCompose(){
+		this.setState({
+			openCompose : false
+		})
 	}
 
 	render() {
@@ -23,7 +36,7 @@ class Mails extends Component {
 				<MailHeader></MailHeader>
 				<div className="mail-content-row">
 					<div className="mail-content-sidemenu">
-						<Sidemenu></Sidemenu>
+						<Sidemenu openCompose={this.openCompose.bind(this)}></Sidemenu>
 					</div>
 					<div className="mail-content-body">			
 				    	<Route path="/mails/inbox"  component={InboxList}></Route>
@@ -42,6 +55,7 @@ class Mails extends Component {
 						<Route path="/mails/createlabel"  component={()=><div>CREATE LABEL</div>}></Route>
 					</div>
 				</div>
+				<MailComposer openCompose={this.state.openCompose} closeCompose={this.closeCompose.bind(this)}></MailComposer>
 			</div>
 			</>
 		)

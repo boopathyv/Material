@@ -35,7 +35,7 @@ class Splitter extends Component {
 								{key === 0? <React.Fragment key={key}></React.Fragment>:
 								<div className={`splitter ${this.props.splitType.toLowerCase()}_splitter`}
 								onDrag={this.onSplitterDrag.bind(this)} onDragEnd={this.onSplitterDrag.bind(this)}></div>}
-								<div key={`container-${key}`} style={key===0?{}:{flex:'auto',backgroundColor:'grey'}}
+								<div key={`container-${key}`} style={key===0?{}:{flex:'auto',backgroundColor:'black'}}
 								className={`split_container container_${key} container_${this.props.splitType.toLowerCase()}`}>
 									{child}
 						   		</div>
