@@ -21,3 +21,4 @@ Note
 * The second ref argument only exists when you define a component with React.forwardRef call. 
 * Regular function or class components don’t receive the ref argument, and ref is not available in props either.
 * Ref forwarding is not limited to DOM components. You can forward refs to class component instances, too.
+## Forwarding refs in higher-order components--> Good Concept
