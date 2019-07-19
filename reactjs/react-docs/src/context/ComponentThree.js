@@ -1,16 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
 
 import {ComponentThreeContext} from '../Context';
 
-class ComponentThree extends React.Component{
+function ComponentThree(){
 
-	render(){
-		return(
-			<ComponentThreeContext.Consumer>
-			{value=><div>ComponentThree---{value}</div>}
-			</ComponentThreeContext.Consumer>
-		)
-	}
+	let value = useContext(ComponentThreeContext);
+	return(
+		<div>ComponentThree---{value}</div>
+	)
 }
 
 export default ComponentThree;

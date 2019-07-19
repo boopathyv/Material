@@ -3,7 +3,7 @@ import {ComponentOneContext} from './Context';
 import ComponentOne from './context/ComponentOne';
 import ListOfTenThings from './JSX/FunctionAsChildren';
 
-function AppContextProvider() {// Context-Provider
+function App() {// Context-Provider
   return (
 	  <ComponentOneContext.Provider value={"green"}>
     	<div className="App">
@@ -19,7 +19,7 @@ function AppFuntionAsChildren() {//JSX notations
 	);
 }
 
-function App() {
+function Appz() {
 	return (
 		<div>{true}</div>
 	);
