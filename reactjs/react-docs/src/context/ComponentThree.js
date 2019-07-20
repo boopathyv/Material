@@ -4,9 +4,9 @@ import {ComponentThreeContext} from '../Context';
 
 function ComponentThree(){
 
-	let value = useContext(ComponentThreeContext);
+	let pro = useContext(ComponentThreeContext);
 	return(
-		<div>ComponentThree---{value}</div>
+		<div>ComponentThree---{pro}</div>
 	)
 }
 

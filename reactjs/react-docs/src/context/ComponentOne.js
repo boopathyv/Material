@@ -10,9 +10,10 @@ class ComponentOne extends React.Component{
 			<ComponentTwoContext.Provider value={'pink'}>
 			<ComponentThreeContext.Provider value={'three-rose'}>
 			<ComponentOneContext.Consumer>
-				{value=>
+				{(value)=>
 				<div>ComponentOne---{value}
 					<><ComponentTwo/></>
+					
 				</div>
 				}
 			</ComponentOneContext.Consumer>

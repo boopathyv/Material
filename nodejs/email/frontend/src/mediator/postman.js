@@ -1,7 +1,8 @@
 const axios = require('axios');
 const mainUrl = 'http://localhost:3008';
 
-
+// If we use 'Content-Type':'application/x-www-form-urlencoded
+// we have to use queryString or qs library for posting data in the request
 function getConfig(){
 	return {
 		headers: {
