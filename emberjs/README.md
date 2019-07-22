@@ -11,3 +11,5 @@
 >> *  	installing route-test
 >> * create tests/unit/routes/scientists-test.js
 > * To Serve : ember serve
+> * Create-Component : ember generate component ..people-list-something..
+> * Build-for-Production : ember build --env production
