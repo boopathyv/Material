@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { LoginContext } from '../context/ContextApi';
+import ErrorBoundary from '../Error/ErrorBoundary';
 
 export class Login extends Component {
 	onClickLogin(){
@@ -8,10 +9,12 @@ export class Login extends Component {
 	}
 
 	render() {
-		return (<div>
+		return (<ErrorBoundary>
+				<div>
 					<div>Login Theme :: {this.context.theme}</div>
 					<button onClick={()=>this.onClickLogin()}>LOGIN</button>
 				</div>
+				</ErrorBoundary>
 		)
 	}
 }

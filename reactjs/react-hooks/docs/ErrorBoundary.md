@@ -1,4 +1,6 @@
 # ERROR Boundaries
+>> It works only for Class Component
+
 >> ## Note:
 >> 
 >> Error boundaries do not catch errors for:
