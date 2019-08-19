@@ -9,7 +9,7 @@ function App() {// Context-Provider
     	<div className="App">
 			<ComponentOne></ComponentOne>
     	</div>
-	</ComponentOneContext.Provider>
+	  </ComponentOneContext.Provider>
   );
 }
 
