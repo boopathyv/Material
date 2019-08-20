@@ -1,0 +1,22 @@
+{
+  "name": "rield_quorum",
+  "version": "1.0.0",
+  "description": "rield_api",
+  "main": "rield.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rahuld94@bitbucket.org/appoets/rield_quorum.git"
+  },
+  "author": "rahul",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/appoets/rield_quorum#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ethereumjs-tx": "^1.3.7",
+    "express": "^4.16.4",
+    "web3": "^1.0.0-beta.46"
+  }
+}
