@@ -3,14 +3,15 @@ class Gangs {
 	constructor(){
 		this.compositeGang = 0;
 		this.primeGang = 0;
+		this.data = {};
 	}
 	
-	main() {
-			var data = readData();
-			
-			var keys = Object.keys(data);
+	main(data) {
+		var keys = Object.keys(data);
 
 		keys.map(key=>{
+		    this.primeGang = 0;
+		    this.compositeGang = 0;
 			let splits = key.split(',');
 			let rows = splits[1];
 			let columns = splits[2];
@@ -31,51 +32,46 @@ class Gangs {
 	}
 
 	readData(){
-		var rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-            terminal: false
-		});
-		var testCases = 0;
-		var count = 0;
-		var test = false;
-		var rowColNum = false;
-		var rowCount = 0;
-		var row = 0;
-		var column = 0;
-		var data = {};
-        rl.on('line', function(line){
-            if(count === 0){
-				count++;
-				testCases++;
-				rowColNum = true;
-			}else if(rowColNum){
-                let seps = line.split(' ');
-				row = parseInt(seps[0]);
-				column = parseInt(seps[1]);
-				rowCount = 0;
-				rowColNum = false;
-			}else if(test){
-				rowColNum = true;
-            }else{
-				var key = testCases+','+row+','+column;
-				if(data[key] === undefined){
-					data[key] = [];
-				}
-				data[key][rowCount] = [];
-				let seps = line.split(' ');
-				seps.map(number=>{
-					data[key][rowCount].push(number);
-				})
-				if(rowCount === row-1){
-					test = true;
-					testCases++;
-				}
-				rowCount++;
-			}
-		}(data));
-		return data;
-	}
+	        var rl = readline.createInterface({
+                input: process.stdin,
+                output: process.stdout,
+                terminal: false
+		    });
+		    var testCases = 0;
+		    var count = 0;
+		    var rowColNum = false;
+		    var rowCount = 0;
+		    var row = 0;
+		    var column = 0;
+            rl.on('line', function(line){
+                if(count === 0){
+    				count++;
+				    testCases++;
+				    rowColNum = true;
+			    }else if(rowColNum){
+                    let seps = line.split(' ');
+				    row = parseInt(seps[0]);
+				    column = parseInt(seps[1]);
+				    rowCount = 0;
+				    rowColNum = false;
+                }else{
+    				var key = testCases+','+row+','+column;
+				    if(this.data[key] === undefined){
+    					this.data[key] = [];
+				    }
+				    this.data[key][rowCount] = [];
+				    let seps = line.split(' ');
+				    seps.map(number=>{
+    					this.data[key][rowCount].push(number);
+				    });
+				    if(rowCount === row-1){
+    					rowColNum = true;
+					    testCases++;
+				    }
+				    rowCount++;
+			    }
+		    }.bind(this)).on('close',()=>{ this.main(this.data);});
+    }
 
 	checkForCompositeGangs(array, rows, columns) {
 		var checkFor = null;
@@ -173,19 +169,19 @@ class Gangs {
 	}
 
 	isPrimeNumber(number) {
-		if(number === 2) {
-			return true;
-		}
-		if(number % 2 === 0) {
-			return false;
-		}
-		for (var i = 2; i < number/2+1; i++) {
-			if(number % i === 0) {
-				return false;
-			}
-		}
-		return true;
-	}
+	    if(parseInt(number) === 2) {
+    		return true;
+    	}
+    	if(parseInt(number) % 2 === 0) {
+		    return false;
+	    }
+	    for (var i = 2; i < parseInt(number)/2+1; i++) {
+    		if(parseInt(number) % i === 0) {
+			    return false;
+		    }
+	    }
+	    return true;
+    }
 }
 
 class Node{
@@ -197,4 +193,4 @@ class Node{
 }
 
 var gangs = new Gangs();
-gangs.main();
+gangs.readData();

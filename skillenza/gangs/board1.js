@@ -6,11 +6,13 @@ class Gangs {
 	}
 	
 	main() {
-			var data = readData();
+			var data = this.readData();
 			
 			var keys = Object.keys(data);
 
 		keys.map(key=>{
+		    this.primeGang = 0;
+		    this.compositeGang = 0;
 			let splits = key.split(',');
 			let rows = splits[1];
 			let columns = splits[2];
@@ -38,7 +40,6 @@ class Gangs {
 		});
 		var testCases = 0;
 		var count = 0;
-		var test = false;
 		var rowColNum = false;
 		var rowCount = 0;
 		var row = 0;
@@ -55,8 +56,6 @@ class Gangs {
 				column = parseInt(seps[1]);
 				rowCount = 0;
 				rowColNum = false;
-			}else if(test){
-				rowColNum = true;
             }else{
 				var key = testCases+','+row+','+column;
 				if(data[key] === undefined){
@@ -68,12 +67,12 @@ class Gangs {
 					data[key][rowCount].push(number);
 				})
 				if(rowCount === row-1){
-					test = true;
+					rowColNum = true;
 					testCases++;
 				}
 				rowCount++;
 			}
-		}(data));
+		});
 		return data;
 	}
 
@@ -173,19 +172,19 @@ class Gangs {
 	}
 
 	isPrimeNumber(number) {
-		if(number === 2) {
-			return true;
-		}
-		if(number % 2 === 0) {
-			return false;
-		}
-		for (var i = 2; i < number/2+1; i++) {
-			if(number % i === 0) {
-				return false;
-			}
-		}
-		return true;
-	}
+	    if(parseInt(number) === 2) {
+    		return true;
+    	}
+    	if(parseInt(number) % 2 === 0) {
+		    return false;
+	    }
+	    for (var i = 2; i < parseInt(number)/2+1; i++) {
+    		if(parseInt(number) % i === 0) {
+			    return false;
+		    }
+	    }
+	    return true;
+    }
 }
 
 class Node{

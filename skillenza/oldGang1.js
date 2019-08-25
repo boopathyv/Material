@@ -38,7 +38,6 @@ class Gangs {
 		});
 		var testCases = 0;
 		var count = 0;
-		var test = false;
 		var rowColNum = false;
 		var rowCount = 0;
 		var row = 0;
@@ -53,10 +52,7 @@ class Gangs {
                 let seps = line.split(' ');
 				row = parseInt(seps[0]);
 				column = parseInt(seps[1]);
-				rowCount = 0;
 				rowColNum = false;
-			}else if(test){
-				rowColNum = true;
             }else{
 				var key = testCases+','+row+','+column;
 				if(data[key] === undefined){
@@ -68,12 +64,12 @@ class Gangs {
 					data[key][rowCount].push(number);
 				})
 				if(rowCount === row-1){
-					test = true;
+					rowColNum = true;
 					testCases++;
 				}
 				rowCount++;
 			}
-		}(data));
+		});
 		return data;
 	}
 
